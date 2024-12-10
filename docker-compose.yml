@@ -1,0 +1,12 @@
+services:
+  app:
+    build: # Build Docker File
+      context: . # . Run the build at the root directory
+      args:
+        - DEV=true
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./app:/app # Bind Mount Volume to the solution app folder for realtime update without rebuilding the image
+    command: >
+      sh -c "python manage.py runserver 0.0.0.0:8000"
