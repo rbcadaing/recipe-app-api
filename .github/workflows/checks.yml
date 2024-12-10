@@ -19,3 +19,7 @@ jobs:
         run: docker compose run --rm app sh -c "python manage.py test"
       - name: Lint
         run: docker compose run --rm app sh -c "flake8"
+      - name: Tag image
+        run: docker image tag recipe-app-api-app:latest ${{ secrets.DOCKERHUB_USER }}/recipe-app-api-app:latest
+      - name: Push to Docker Hub
+        run: docker image push ${{ secrets.DOCKERHUB_USER }}/recipe-app-api-app:latest
