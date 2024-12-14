@@ -11,3 +11,12 @@ docker compose run --rm app sh -c "django-admin startproject app ."
 
 # Run Test
 docker compose run --rm app sh -c "python manage.py test"
+
+# Create new App Named Core
+docker compose run --rm app sh -c "python manage.py startapp core"
+
+# Run django custom command
+docker compose run --rm app sh -c "python manage.py wait_for_db"
+
+# disable flake8 liniting
+add # noqa to admin.py and models.py
