@@ -20,3 +20,9 @@ docker compose run --rm app sh -c "python manage.py wait_for_db"
 
 # disable flake8 liniting
 add # noqa to admin.py and models.py
+
+# create migrations
+docker compose run --rm app sh -c "python manage.py makemigrations"
+
+# run migrations
+docker compose run --rm app sh -c "python manage.py wait_for_db && python manage.py migrate"
